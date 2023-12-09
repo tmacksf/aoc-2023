@@ -6,7 +6,7 @@ readInputPt2 fname = (map parseLine . lines) <$> readFile fname
 
 extrapolate :: [Int] -> [Int] -> [Int]
 extrapolate (x:y:xs) ls = extrapolate (y:xs) (ls ++ [y - x])
-extrapolate [x] ls = ls ++ [(last (if check ls then [0] else extrapolate ls [])) - x]
+extrapolate [x] ls = ls ++ [(last (if check ls then [0] else extrapolate ls [])) + x]
 extrapolate [] ls = error "bruh"
 
 check :: [Int] -> Bool
@@ -15,7 +15,7 @@ check = foldr (\x acc -> (x == 0) && acc) True
 solve1 :: [[Int]] -> Int
 solve1 i = sum $ map (last) $ map (\x -> extrapolate x []) i
 
-solve2 :: [[Int]] -> Int
+-- point free!
 solve2 = solve1 . map reverse
 
 main = do
