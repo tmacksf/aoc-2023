@@ -129,7 +129,7 @@ readInputPt2 fname = (map parseLine . lines) <$> readFile fname
 valFind2 :: (Int, Int) -> Mapping -> [(Int, Int)]
 valFind2 val [] = [val] 
 valFind2 (s, l) ((x, y, z):xs)
-  | s >= y && s < (y + z) = if (s + l - 1) < (y + z) 
+  | s >= y && s < (y + z) = if (s + l) <= (y + z) 
     then [(s - y + x, l)] 
     else (s - y + x, (y + z) - s) : valFind2 (y + z, l - (y + z - s)) xs --(val - y) + x
   | otherwise = valFind2 (s, l) xs
