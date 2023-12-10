@@ -1,7 +1,7 @@
 module Main where
 
-readInputPt2 :: FilePath -> IO [[Int]] 
-readInputPt2 fname = (map parseLine . lines) <$> readFile fname
+readInput :: FilePath -> IO [[Int]] 
+readInput fname = (map parseLine . lines) <$> readFile fname
     where parseLine xs = map read $ words xs
 
 extrapolate :: [Int] -> [Int] -> [Int]
@@ -19,5 +19,5 @@ solve1 i = sum $ map (last) $ map (\x -> extrapolate x []) i
 solve2 = solve1 . map reverse
 
 main = do
-  i <- readInputPt2 "input.txt"
+  i <- readInput "input.txt"
   print $ solve2 i
