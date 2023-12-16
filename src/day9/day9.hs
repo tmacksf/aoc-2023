@@ -12,12 +12,12 @@ extrapolate [] ls = error "bruh"
 check :: [Int] -> Bool
 check = foldr (\x acc -> (x == 0) && acc) True 
 
-solve1 :: [[Int]] -> Int
-solve1 i = sum $ map (last) $ map (\x -> extrapolate x []) i
+part1 :: [[Int]] -> Int
+part1 i = sum $ map (last) $ map (\x -> extrapolate x []) i
 
 -- point free!
-solve2 = solve1 . map reverse
+part2 = part1 . map reverse
 
 main = do
   i <- readInput "input.txt"
-  print $ solve2 i
+  print $ part2 i
