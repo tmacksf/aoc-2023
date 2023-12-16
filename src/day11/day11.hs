@@ -124,10 +124,10 @@ dist ps (i, j) (x, y)
   | j < y = vscaleFactor ((ps !! i) !! j) + dist ps (i, j + 1) (x, y)
   | otherwise = error "Otherwise error"
 
-solution2 :: [String] -> Int
-solution2 xs = totalDistance2 ex (findGalaxies2 ex (0, 0))
+part2 :: [String] -> Int
+part2 xs = totalDistance2 ex (findGalaxies2 ex (0, 0))
   where ex = expand2 xs
 
 main = do
   x <- readInputPt1 "input.txt"
-  print $ solution2 x
+  print $ part2 x
